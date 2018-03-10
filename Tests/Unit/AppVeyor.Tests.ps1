@@ -1,6 +1,9 @@
 $script:ModuleName = 'AppVeyor'
 $script:moduleRootPath = Split-Path -Path (Split-Path -Path $PSScriptRoot -Parent) -Parent
-$env:APPVEYOR_BUILD_FOLDER = 'c:\project\'
+if($null -eq $env:APPVEYOR_BUILD_FOLDER)
+{
+    $env:APPVEYOR_BUILD_FOLDER = 'C:\projects\dscresource-tests'
+}
 Describe "$($script:ModuleName) Unit Tests" {
     BeforeAll {
         Import-Module -Name (Join-Path -Path $script:moduleRootPath -ChildPath "$($script:ModuleName).psm1") -Force
