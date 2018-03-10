@@ -250,8 +250,8 @@ function Invoke-AppveyorTestScriptTask
                 $codeCoveragePaths = @(
                     "$env:APPVEYOR_BUILD_FOLDER\*.psm1"
                 )
-                Write-Warning -Message "here are the paths: $codeCoveragePaths"
-                # Define the folders to check if they exist, if found add the path to be used for codecoverage
+
+                # Define the folders to check, if found add the path for codecoverage
                 $possibleModulePaths = @(
                     "DSCResources",
                     "DSCClassResources"
@@ -265,7 +265,7 @@ function Invoke-AppveyorTestScriptTask
                         $codeCoveragePaths += "$env:APPVEYOR_BUILD_FOLDER\$possibleModulePath\**\*.psm1"
                     }
                 }
-                Write-Warning -Message "here are the pathsafter checks: $codeCoveragePaths"
+
                 $pesterParameters += @{
                     CodeCoverage = $codeCoveragePaths
                 }
@@ -391,8 +391,7 @@ function Invoke-AppveyorTestScriptTask
                 $pesterParameters += @{
                     Path = $testObjectOrder.TestPath
                 }
-                Write-Warning "pester params for codecov: $($pesterParamaters.CodeCoverage)"
-               
+                               
                 $results = Invoke-Pester @pesterParameters
             }
             else
