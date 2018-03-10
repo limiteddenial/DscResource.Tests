@@ -261,8 +261,8 @@ function Invoke-AppveyorTestScriptTask
                 {
                     if(Test-Path -Path $MainModulePath\$possibleModulePath)
                     {
-                        $codeCoveragePaths += "$env:APPVEYOR_BUILD_FOLDER\$posibleModulePath\*.psm1"
-                        $codeCoveragePaths += "$env:APPVEYOR_BUILD_FOLDER\$posibleModulePath\**\*.psm1"
+                        $codeCoveragePaths += "$env:APPVEYOR_BUILD_FOLDER\$possibleModulePath\*.psm1"
+                        $codeCoveragePaths += "$env:APPVEYOR_BUILD_FOLDER\$possibleModulePath\**\*.psm1"
                     }
                 }
                 Write-Warning -Message "here are the pathsafter checks: $codeCoveragePaths"
