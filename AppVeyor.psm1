@@ -253,13 +253,13 @@ function Invoke-AppveyorTestScriptTask
 
                 # Define the folders to check, if found add the path for codecoverage
                 $possibleModulePaths = @(
-                    "DSCResources",
-                    "DSCClassResources"
+                    'DSCResources',
+                    'DSCClassResources'
                 )
 
                 foreach ($possibleModulePath in $possibleModulePaths)
                 {
-                    if(Test-Path -Path $MainModulePath\$possibleModulePath)
+                    if (Test-Path -Path $MainModulePath\$possibleModulePath)
                     {
                         $codeCoveragePaths += "$env:APPVEYOR_BUILD_FOLDER\$possibleModulePath\*.psm1"
                         $codeCoveragePaths += "$env:APPVEYOR_BUILD_FOLDER\$possibleModulePath\**\*.psm1"
